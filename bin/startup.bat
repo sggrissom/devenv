@@ -1,2 +1,2 @@
 @echo off
-subst w: "c:/cygwin64/home/steve ctr grissom/"
+subst w: "C:\cygwin64\home\steve ctr grissom"
