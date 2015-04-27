@@ -1,0 +1,62 @@
+;; sg-config.el
+;; general emacs configuration
+
+;; determine the operating system
+
+(defvar steven-aquamacs (featurep 'aquamacs))
+(defvar steven-linux (featurep 'x))
+(defvar steven-win32 (not (or steven-aquamacs steven-linux)))
+
+(when steven-win32 
+  (defvar steven-makescript "build.bat")
+  )
+
+(when steven-aquamacs 
+  (cua-mode 0) 
+  (osx-key-mode 0)
+  (tabbar-mode 0)
+  (defvar mac-command-modifier 'meta)
+  (defvar x-select-enable-clipboard t)
+  (defvar aquamacs-save-options-on-quit 0)
+  (defvar special-display-regexps nil)
+  (defvar special-display-buffer-names nil)
+  (define-key function-key-map [return] [13])
+  (defvar mac-command-key-is-meta t)
+  (scroll-bar-mode nil)
+  (defvar mac-pass-command-to-system nil)
+  (defvar steven-makescript "./build.macosx")
+  )
+
+(when steven-linux
+  (defvar steven-makescript "./build.linux")
+  )
+
+;;turn on super useful IDO mode.
+;;it makes changing buffers and finding files and stuff way awesome
+(ido-mode 1)
+(defvar ido-enable-flex-matching t)
+(defvar ido-everywhere t)
+(defvar ido-create-new-buffer 'always)
+
+;;no ~ files
+(defvar make-backup-files nil) 
+(defvar backup-inhibited t)
+(defvar auto-save-default nil)
+
+(load-library "view")
+(require 'cc-mode)
+(require 'ido)
+(require 'compile)
+
+(defvar compilation-directory-locked nil)
+(defvar compilation-context-lines 0)
+(defvar compilation-error-regexp-alist
+  (cons '("^\\([0-9]+>\\)?\\(\\(?:[a-zA-Z]:\\)?[^:(\t\n]+\\)(\\([0-9]+\\)) : \\(?:fatal error\\|warnin\\(g\\)\\) C[0-9]+:" 2 3 nil (4))
+	compilation-error-regexp-alist))
+
+(require 'eshell)
+(require 'em-smart)
+(setq eshell-where-to-jump 'begin)
+(setq eshell-review-quick-commands nil)
+(setq eshell-smart-space-goes-to-end t)
+

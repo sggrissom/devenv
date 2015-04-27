@@ -1,0 +1,4 @@
+#ignore everything that isn't my el files
+*
+!.gitignore
+!sg*.el
