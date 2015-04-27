@@ -21,6 +21,7 @@
 				       (thing-at-point 'line)))))
 
 (add-hook 'after-init-hook 'global-company-mode)
+(defvar company-global-modes '(not eshell-mode))
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
