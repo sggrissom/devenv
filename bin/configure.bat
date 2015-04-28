@@ -1,4 +1,12 @@
 @echo off
+
+OPENFILES >nul 2>nul
+IF ERRORLEVEL 1 (
+   ECHO.This script must be run as administrator.
+   PAUSE
+   GOTO :eof
+   )
+
 copy startup.bat "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
 call startup.bat
 mklink /D w:\.emacs.d w:\devenv\.emacs.d
