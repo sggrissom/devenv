@@ -7,12 +7,12 @@ IF ERRORLEVEL 1 (
    GOTO :eof
    )
 
-copy startup.bat "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+mklink /D "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup" w:\devenv\.emacs.d
 call startup.bat
 mklink /D w:\.emacs.d w:\devenv\.emacs.d
 
 set TARGET='%windir%\system32\cmd.exe'
-set SHORTCUT='C:\Users\steve ctr grissom\Desktop\cmd.lnk'
+set SHORTCUT='%USERPROFILE%\Desktop\cmd.lnk'
 set ARGUMENTS='/k w:\devenv\bin\shell.bat'
 set STARTIN='w:\'
 
