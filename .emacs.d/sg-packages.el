@@ -23,6 +23,7 @@
     js2-mode
     web-mode
     magit
+    powershell
     ) "a list of packages to ensure are installed at launch.")
 
 ;; method to check if all packages are installed
