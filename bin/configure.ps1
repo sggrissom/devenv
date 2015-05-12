@@ -13,8 +13,8 @@ $desktopFolder = $env:USERPROFILE + "\Desktop"
 $cmdLink = $desktopFolder + "\cmd.lnk"
 $cmdPath = $env:WINDIR + "\system32\cmd.exe"
 
-.\startup.bat
-New-Item $startupLinkPath -type file -force -value "call $startupScriptPath"
+subst w: $env:home
+New-Item $startupLinkPath -type file -force -value "subst w: %home%"
 cmd /c mklink /D w:\.emacs.d w:\devenv\.emacs.d
 
 $ws = New-Object -ComObject WScript.Shell;
