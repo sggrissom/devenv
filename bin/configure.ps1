@@ -21,3 +21,5 @@ $S.TargetPath = $cmdPath
 $S.Arguments = '/k w:\devenv\bin\shell.bat'
 $S.WorkingDirectory = 'w:\'
 $S.Save()
+
+.\installEmacs.ps1
