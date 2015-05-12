@@ -38,10 +38,7 @@
 (defvar ido-everywhere t)
 (defvar ido-create-new-buffer 'always)
 
-;;no ~ files
-(defvar make-backup-files nil) 
-(defvar backup-inhibited t)
-(defvar auto-save-default nil)
+(setq backup-directory-alist `(("." . "~/.saves")))
 
 (load-library "view")
 (require 'cc-mode)
