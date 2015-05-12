@@ -13,7 +13,5 @@
 (add-hook 'window-setup-hook '(lambda ()
 				(interactive)
 				(maximize-frame)
+				(toggle-frame-maximized)
 				))
-
-(defvar comint-mode-map)
-(add-hook 'comint-mode-hook (lambda () (define-key comint-mode-map "\t" 'self-insert-command)))
