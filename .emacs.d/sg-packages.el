@@ -16,13 +16,10 @@
     evil-nerd-commenter
     aggressive-indent
     company
-    go-mode
-    company-go
     flycheck
     php-mode
     js2-mode
     web-mode
-    magit
     powershell
     dos
     ) "a list of packages to ensure are installed at launch.")
