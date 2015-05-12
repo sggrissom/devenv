@@ -6,11 +6,16 @@ If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 }
 
 $currentPath = Split-Path $MyInvocation.MyCommand.Path
+$parentPath = Split-Path $currentPath
 $startupFolder = $env:APPDATA + "\Microsoft\Windows\Start Menu\Programs\Startup"
-$startupLinkPath = $startupFolder + "\startup.bat"
+$startupBatchPath = $startupFolder + "\startup.bat"
 $desktopFolder = $env:USERPROFILE + "\Desktop"
 $cmdLink = $desktopFolder + "\cmd.lnk"
 $cmdPath = $env:WINDIR + "\system32\cmd.exe"
+
+if (-NOT ($env:home)){
+$env:home = $parentPath
+}
 
 subst w: $env:home
 New-Item $startupBatchPath -type file -force -value "subst w: %home%"
