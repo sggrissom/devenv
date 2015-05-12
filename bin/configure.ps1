@@ -5,14 +5,16 @@ If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     Break
 }
 
+$currentPath = Split-Path $MyInvocation.MyCommand.Path
 $startupFolder = $env:APPDATA + "\Microsoft\Windows\Start Menu\Programs\Startup"
-$startupBatchPath = $startupFolder + "\startup.bat"
+$startupLinkPath = $startupFolder + "\startupLink.bat"
+$startupScriptPath = $currentPath + '\startup.bat'
 $desktopFolder = $env:USERPROFILE + "\Desktop"
 $cmdLink = $desktopFolder + "\cmd.lnk"
 $cmdPath = $env:WINDIR + "\system32\cmd.exe"
 
 .\startup.bat
-cmd /c mklink /D $startupBatchPath w:\devenv\bin\startup.bat
+New-Item $startupLinkPath -type file -force -value "call $startupScriptPath"
 cmd /c mklink /D w:\.emacs.d w:\devenv\.emacs.d
 
 $ws = New-Object -ComObject WScript.Shell;
@@ -22,4 +24,5 @@ $S.Arguments = '/k w:\devenv\bin\shell.bat'
 $S.WorkingDirectory = 'w:\'
 $S.Save()
 
+.\installGit.ps1
 .\installEmacs.ps1
