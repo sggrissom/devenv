@@ -7,6 +7,7 @@ If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 
 $currentPath = Split-Path $MyInvocation.MyCommand.Path
 $parentPath = Split-Path $currentPath
+$parentPath = Split-Path $parentPath
 $startupFolder = $env:APPDATA + "\Microsoft\Windows\Start Menu\Programs\Startup"
 $startupBatchPath = $startupFolder + "\startup.bat"
 $desktopFolder = $env:USERPROFILE + "\Desktop"
@@ -18,7 +19,7 @@ $env:home = $parentPath
 }
 
 subst w: $env:home
-New-Item $startupBatchPath -type file -force -value "subst w: %home%"
+New-Item $startupBatchPath -type file -force -value "subst w: $env:home"
 cmd /c mklink /D w:\.emacs.d w:\devenv\.emacs.d
 
 $ws = New-Object -ComObject WScript.Shell;
