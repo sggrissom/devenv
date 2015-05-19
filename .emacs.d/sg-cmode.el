@@ -78,3 +78,4 @@
 							       2 3 nil (4)))
   )
 
+(add-hook 'c-mode-common-hook 'steven-c-hook)
