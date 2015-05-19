@@ -15,7 +15,7 @@ $cmdLink = $desktopFolder + "\cmd.lnk"
 $cmdPath = $env:WINDIR + "\system32\cmd.exe"
 
 if (-NOT ($env:home)){
-$env:home = $parentPath
+    $env:home = $parentPath
 }
 
 subst w: $env:home

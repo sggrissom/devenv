@@ -1,6 +1,6 @@
 @echo off
 
-REM cmd shortcut target: %windir%\system32\cmd.exe /k w:\devenv\bin\shell.bat
-
 set path=w:\bin;w:\devenv\bin;%path%
 set home=w:\
+
+call "%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x64
