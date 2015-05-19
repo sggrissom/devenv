@@ -9,8 +9,6 @@
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; not smex M-x
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (evilnc-default-hotkeys)
 
@@ -23,9 +21,4 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (defvar company-global-modes '(not eshell-mode))
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-(add-hook 'after-init-hook (lambda () (defvar flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-			     ))
-
-(global-set-key "\eg" 'magit-status)
+(yas-global-mode 1)
