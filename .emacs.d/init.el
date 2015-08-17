@@ -9,9 +9,3 @@
 			      (load "~/devenv/.emacs.d/sg-functions.el")
 			      (load "~/devenv/.emacs.d/sg-keybindings.el")
 			      ))
-
-(add-hook 'window-setup-hook '(lambda ()
-				(interactive)
-				(maximize-frame)
-				(toggle-frame-maximized)
-				))

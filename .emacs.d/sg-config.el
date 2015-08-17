@@ -3,18 +3,16 @@
 
 ;; determine the operating system
 
-(defvar steven-aquamacs (featurep 'aquamacs))
+(defvar steven-mac (eq system-type 'darwin))
 (defvar steven-linux (featurep 'x))
-(defvar steven-win32 (not (or steven-aquamacs steven-linux)))
+(defvar steven-win32 (not (or steven-mac steven-linux)))
 
 (when steven-win32 
   (defvar steven-makescript "build.bat")
   )
 
-(when steven-aquamacs 
+(when steven-mac 
   (cua-mode 0) 
-  (osx-key-mode 0)
-  (tabbar-mode 0)
   (defvar mac-command-modifier 'meta)
   (defvar x-select-enable-clipboard t)
   (defvar aquamacs-save-options-on-quit 0)
