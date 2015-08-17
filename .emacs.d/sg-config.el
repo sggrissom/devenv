@@ -64,3 +64,8 @@
 
 (setq scroll-conservatively 10)
 (setq scroll-margin 7)
+
+(add-hook 'window-setup-hook '(lambda()
+				(interactive)
+				(toggle-frame-maximized)
+				))
