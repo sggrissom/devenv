@@ -47,7 +47,7 @@
                                     (access-label          . -4)
                                     (substatement-open     .  0)
                                     (statement-case-intro  .  4)
-                                    (statement-block-intro .  c-lineup-for)
+                                    ;;(statement-block-intro .  c-lineup-for)
                                     (case-label            .  4)
                                     (block-open            .  0)
                                     (inline-open           .  0)
@@ -71,11 +71,25 @@
   ;; Additional style stuff
   (c-set-offset 'member-init-intro '++)
 
+  ;; No hungry backspace
+  (c-toggle-auto-hungry-state -1)
+
+  ;; Newline indents, semi-colon doesn't
+  (define-key c++-mode-map "\C-m" 'newline-and-indent)
+  (setq c-hanging-semi&comma-criteria '((lambda () 'stop)))
+
   ;; devenv.com error parsing
   (add-to-list (defvar compilation-error-regexp-alist) 'steven-devenv)
   (add-to-list (defvar compilation-error-regexp-alist-alist) '(steven-devenv
 							       "*\\([0-9]+>\\)?\\(\\(?:[a-zA-Z]:\\)?[^:(\t\n]+\\)(\\([0-9]+\\)) : \\(?:see declaration\\|\\(?:warnin\\(g\\)\\|[a-z ]+\\) C[0-9]+:\\)"
 							       2 3 nil (4)))
+
+  
+  (cond ((file-exists-p buffer-file-name) t)
+	((string-match "[.]h" buffer-file-name) (steven-header-format))
+	((string-match "[.]cpp" buffer-file-name) (steven-source-format)))
+
+
   )
 
 (add-hook 'c-mode-common-hook 'steven-c-hook)

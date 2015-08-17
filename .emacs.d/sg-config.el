@@ -57,3 +57,12 @@
 (setq eshell-review-quick-commands nil)
 (setq eshell-smart-space-goes-to-end t)
 
+;; Handle super-tabbify (TAB completes, shift-TAB actually tabs)
+(setq dabbrev-case-replace t)
+(setq dabbrev-case-fold-search t)
+(setq dabbrev-upcase-means-case-search t)
+
+(abbrev-mode 1)
+
+(setq scroll-conservatively 10)
+(setq scroll-margin 7)

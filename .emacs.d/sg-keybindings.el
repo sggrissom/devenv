@@ -1,44 +1,57 @@
 ;; sg-keybindings.el
 ;; customize key commands
 
-;; view function current keybining
-;; C-h f function-name
+(defvar steven-keys-minor-mode-map (make-keymap) "steven-keys-minor-mode keymap.")
 
-;; keybinding current function
-;; C-h k key-sequence
+;; view function current keybining or vice versa
+(define-key steven-keys-minor-mode-map (kbd "C-?") 'describe-key)
+(define-key steven-keys-minor-mode-map (kbd "M-?") 'describe-function)
 
-;;prevent the dumb C-x C-b buffer list opening in a new window and
-;;instead open it in the same window
-(global-set-key (kbd "C-x C-b") 'buffer-menu)
+(define-key steven-keys-minor-mode-map (kbd "C-h") 'backward-char)
+(define-key steven-keys-minor-mode-map (kbd "C-l") 'forward-char)
+(define-key steven-keys-minor-mode-map (kbd "M-h") 'backward-word)
+(define-key steven-keys-minor-mode-map (kbd "M-l") 'forward-word)
 
-;;unset C-x f because why would I care to set the width of whatever?
-(global-unset-key (kbd "C-x f"))
-(global-unset-key (kbd "C-c C-b"))
+(define-key steven-keys-minor-mode-map (kbd "C-j") 'next-line)
+(define-key steven-keys-minor-mode-map (kbd "C-k") 'previous-line)
+(define-key steven-keys-minor-mode-map (kbd "M-j") 'forward-paragraph)
+(define-key steven-keys-minor-mode-map (kbd "M-k") 'backward-paragraph)
 
-;; run compilation file
-;; meta m
-(global-set-key (kbd "M-m") 'make-without-asking)
+(define-key steven-keys-minor-mode-map (kbd "C-n") 'move-beginning-of-line)
+(define-key steven-keys-minor-mode-map (kbd "C-p") 'move-end-of-line)
+(global-unset-key (kbd "M-n"))
+(global-unset-key (kbd "M-p"))
 
-;; open/create file 
-;; meta f, meta shift f
-(global-set-key (kbd "M-f") 'find-file)
-(global-set-key (kbd "M-F") 'find-file-other-window)
+(define-key steven-keys-minor-mode-map (kbd "C-o") 'vi-open-line-below)
+(define-key steven-keys-minor-mode-map (kbd "M-d") 'kill-current-line)
 
-;; switch to file
-;; meta b, meta shift b
-(global-set-key (kbd "M-b")  'ido-switch-buffer)
-(global-set-key (kbd "M-B")  'ido-switch-buffer-other-window)
+(define-key steven-keys-minor-mode-map (kbd "M-m") 'make-without-asking)
 
-;; switch to other window
-;; meta w
-(global-set-key (kbd "M-w") 'other-window)
+(define-key steven-keys-minor-mode-map (kbd "M-f") 'find-file)
+(define-key steven-keys-minor-mode-map (kbd "M-F") 'find-file-other-window)
 
-(global-set-key (kbd "M-W") 'buf-swap)
+(define-key steven-keys-minor-mode-map (kbd "M-b")  'ido-switch-buffer)
+(define-key steven-keys-minor-mode-map (kbd "M-B")  'ido-switch-buffer-other-window)
 
-;; save
-;; meta s
-(global-set-key (kbd "M-s") 'save-buffer)
+(define-key steven-keys-minor-mode-map (kbd "M-w") 'other-window)
+(define-key steven-keys-minor-mode-map (kbd "M-W") 'buf-swap)
 
-;;movement
-(global-set-key (kbd "C-j") 'next-blank-line)
-(global-set-key (kbd "C-k") 'previous-blank-line)
+(define-key steven-keys-minor-mode-map (kbd "M-s") 'save-buffer)
+
+(define-key steven-keys-minor-mode-map (kbd "M-c") 'find-corresponding-file)
+(define-key steven-keys-minor-mode-map (kbd "M-C") 'find-corresponding-file-other-window)
+
+
+(define-key steven-keys-minor-mode-map "\t" 'dabbrev-expand)
+(define-key steven-keys-minor-mode-map [S-tab] 'indent-for-tab-command)
+(define-key steven-keys-minor-mode-map [C-tab] 'indent-region)
+
+(define-key steven-keys-minor-mode-map "\eq" 'append-as-kill)
+(define-key steven-keys-minor-mode-map "\ea" 'yank)
+
+
+(define-minor-mode steven-keys-minor-mode
+  "A minor mode that contains my keybindings."
+  t " steven-keys" 'steven-keys-minor-mode-map)
+
+(steven-keys-minor-mode 1)

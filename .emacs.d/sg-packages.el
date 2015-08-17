@@ -11,17 +11,15 @@
 
 (defvar required-packages
   '(
-    evil
     smex
-    evil-nerd-commenter
-    aggressive-indent
-    company
+    go-mode
     php-mode
     js2-mode
     web-mode
     powershell
     dos
-    yasnippet
+    haskell-mode
+    auctex
     ) "a list of packages to ensure are installed at launch.")
 
 ;; method to check if all packages are installed
