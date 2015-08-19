@@ -133,3 +133,8 @@
   (insert "   $Creator: Steven Grissom $\n")							 
   (insert "   ======================================================================== */\n") 
   )
+
+(set-variable 'grep-command "grep -irHn ")
+(when steven-win32
+    (setq grep-use-null-device t)
+    (set-variable 'grep-command "findstr -s -n -i -l "))
