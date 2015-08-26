@@ -11,17 +11,8 @@
   (defvar steven-makescript "build.bat")
   )
 
-(when steven-mac 
-  (cua-mode 0) 
-  (defvar mac-command-modifier 'meta)
-  (defvar x-select-enable-clipboard t)
-  (defvar aquamacs-save-options-on-quit 0)
-  (defvar special-display-regexps nil)
-  (defvar special-display-buffer-names nil)
-  (define-key function-key-map [return] [13])
-  (defvar mac-command-key-is-meta t)
-  (scroll-bar-mode nil)
-  (defvar mac-pass-command-to-system nil)
+(when steven-mac
+  (setq ns-command-modifier 'meta)
   (defvar steven-makescript "./build.macosx")
   )
 

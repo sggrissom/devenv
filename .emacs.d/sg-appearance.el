@@ -53,10 +53,3 @@
 (setq-default truncate-lines t)
 (setq truncate-partial-width-windows nil)
 (split-window-horizontally)
-
-(defun maximize-frame ()
-  "Maximize the current frame"
-  (interactive)
-  (w32-send-sys-command 61488))
-
-(maximize-frame)
