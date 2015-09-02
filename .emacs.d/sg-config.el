@@ -13,7 +13,7 @@
 
 (when steven-mac
   (setq ns-command-modifier 'meta)
-  (defvar steven-makescript "./build.macosx")
+  (defvar steven-makescript "./build.osx")
   )
 
 (when steven-linux
