@@ -26,6 +26,7 @@
 (define-key steven-keys-minor-mode-map (kbd "M-d") 'kill-current-line)
 
 (define-key steven-keys-minor-mode-map (kbd "M-m") 'make-without-asking)
+(define-key steven-keys-minor-mode-map (kbd "M-M") 'run-without-asking)
 
 (define-key steven-keys-minor-mode-map (kbd "M-f") 'find-file)
 (define-key steven-keys-minor-mode-map (kbd "M-F") 'find-file-other-window)

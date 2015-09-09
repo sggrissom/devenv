@@ -35,6 +35,11 @@
   (interactive)
   (if (find-project-directory) (compile steven-makescript)))
 
+(defun run-without-asking ()
+  "Make the current build."
+  (interactive)
+  (if (find-project-directory) (compile steven-runscript)))
+
 (defun buf-swap ()
   (interactive)
   (let* ((right-win (windmove-find-other-window 'right))

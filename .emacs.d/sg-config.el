@@ -9,6 +9,7 @@
 
 (when steven-win32 
   (defvar steven-makescript "build.bat")
+  (defvar steven-runscript "run.bat")
   )
 
 (when steven-mac
