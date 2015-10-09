@@ -33,27 +33,31 @@
 (defun make-without-asking ()
   "Make the current build."
   (interactive)
-  (if (find-project-directory) (compile steven-makescript)))
+  (if (find-project-directory) (execute-script steven-makescript)))
 
 (defun run-without-asking ()
   "Make the current build."
   (interactive)
-  (if (find-project-directory) (compile steven-runscript)))
+  (if (find-project-directory) (execute-script steven-runscript)))
 
-(defun buf-swap ()
+(defun execute-script (script)
+  "test to compile and swap windows"
   (interactive)
-  (let* ((right-win (windmove-find-other-window 'right))
-	 (left-win (windmove-find-other-window 'left))
-	 (buf-this-buf (window-buffer (selected-window))))
-    (if (null right-win)
-	(if (null left-win)
-	    (error "only one verticle window")
-	  (swap buf-this-buf left-win))
-      (swap buf-this-buf right-win))))
+  (compile script)
+  (other-window -1)
+  )
 
-(defun swap (curBuf otherBuf)
-  (set-window-buffer (selected-window) (window-buffer otherBuf))
-  (set-window-buffer otherBuf curBuf))
+(defun transpose-windows (arg)
+  "Transpose the buffers shown in two windows."
+  (interactive "p")
+  (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
+    (while (/= arg 0)
+      (let ((this-win (window-buffer))
+	    (next-win (window-buffer (funcall selector))))
+	(set-window-buffer (selected-window) next-win)
+	(set-window-buffer (funcall selector) this-win)
+	(select-window (funcall selector)))
+      (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
 
 (defun find-corresponding-file ()
   "Find the file that corresponds to this one."
@@ -76,15 +80,6 @@
   (find-corresponding-file)
   (other-window -1))
 
-(defun vi-open-line-above ()
-  "Insert a newline above the current line and put point at beginning."
-  (interactive)
-  (unless (bolp)
-    (beginning-of-line))
-  (newline)
-  (forward-line -1)
-  (indent-according-to-mode))
-
 (defun vi-open-line-below ()
   "Insert a newline below the current line and put point at beginning."
   (interactive)
@@ -98,8 +93,6 @@
     (beginning-of-line)
     (let ((kill-whole-line t))
       (kill-line n))))
-
-
 
 (defun steven-header-format ()								 
   "Format the given file as a header file."							 

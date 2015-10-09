@@ -35,7 +35,7 @@
 (define-key steven-keys-minor-mode-map (kbd "M-B")  'ido-switch-buffer-other-window)
 
 (define-key steven-keys-minor-mode-map (kbd "M-w") 'other-window)
-(define-key steven-keys-minor-mode-map (kbd "M-W") 'buf-swap)
+(define-key steven-keys-minor-mode-map (kbd "M-W") 'transpose-windows)
 
 (define-key steven-keys-minor-mode-map (kbd "M-s") 'save-buffer)
 
