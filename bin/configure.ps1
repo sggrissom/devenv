@@ -28,6 +28,3 @@ $S.TargetPath = $cmdPath
 $S.Arguments = '/k w:\devenv\bin\shell.bat'
 $S.WorkingDirectory = 'w:\'
 $S.Save()
-
-.\installGit.ps1
-.\installEmacs.ps1
