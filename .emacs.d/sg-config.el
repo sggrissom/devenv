@@ -29,7 +29,10 @@
 (defvar ido-everywhere t)
 (defvar ido-create-new-buffer 'always)
 
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 (load-library "view")
 (require 'cc-mode)
