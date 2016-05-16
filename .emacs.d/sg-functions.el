@@ -149,4 +149,4 @@
 (set-variable 'grep-command "grep -irHn ")
 (when steven-win32
     (setq grep-use-null-device t)
-    (set-variable 'grep-command "findstr -s -n -i -l "))
+    (set-variable 'grep-command "findstr -spnil -c:"" *.*"))

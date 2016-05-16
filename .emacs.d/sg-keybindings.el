@@ -3,6 +3,9 @@
 
 (defvar steven-keys-minor-mode-map (make-keymap) "steven-keys-minor-mode keymap.")
 
+;;for whatever reason c-i and <tab> are the same. This allows them to be bound differently
+(setq steven-keys-minor-mode-map (delq '(kp-tab . [9]) steven-keys-minor-mode-map))
+
 ;; view function current keybining or vice versa
 (define-key steven-keys-minor-mode-map (kbd "C-?") 'describe-key)
 (define-key steven-keys-minor-mode-map (kbd "M-?") 'describe-function)
@@ -38,18 +41,19 @@
 (define-key steven-keys-minor-mode-map (kbd "M-W") 'transpose-windows)
 
 (define-key steven-keys-minor-mode-map (kbd "M-s") 'save-buffer)
+(define-key steven-keys-minor-mode-map (kbd "C-s") 'isearch-forward)
+(define-key steven-keys-minor-mode-map (kbd "C-S") 'isearch-backward)
 
 (define-key steven-keys-minor-mode-map (kbd "M-c") 'find-corresponding-file)
 (define-key steven-keys-minor-mode-map (kbd "M-C") 'find-corresponding-file-other-window)
 
+(define-key steven-keys-minor-mode-map (kbd "M-u") 'kill-region)
+(define-key steven-keys-minor-mode-map (kbd "C-u") 'kill-ring-save)
+(define-key steven-keys-minor-mode-map (kbd "C-i") 'yank)
 
-(define-key steven-keys-minor-mode-map "\t" 'dabbrev-expand)
+(define-key steven-keys-minor-mode-map (kbd "<tab>") 'dabbrev-expand)
 (define-key steven-keys-minor-mode-map [S-tab] 'indent-for-tab-command)
 (define-key steven-keys-minor-mode-map [C-tab] 'indent-region)
-
-(define-key steven-keys-minor-mode-map "\eq" 'append-as-kill)
-(define-key steven-keys-minor-mode-map "\ea" 'yank)
-
 
 (define-minor-mode steven-keys-minor-mode
   "A minor mode that contains my keybindings."
