@@ -146,7 +146,6 @@
   (insert "\n")
   )
 
-(set-variable 'grep-command "grep -irHn ")
-(when steven-win32
-    (setq grep-use-null-device t)
-    (set-variable 'grep-command "findstr -spnil -c:"" *.*"))
+
+(setq grep-use-null-device t)
+(set-variable 'grep-command "findstr -spnil -c:\"\" \*\.\*")
