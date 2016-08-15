@@ -8,6 +8,7 @@
          ("\\.h$"    . c++-mode)
          ("\\.c$"   . c++-mode)
          ("\\.txt$" . indented-text-mode)
+         ("\\.el$" . emacs-lisp-mode)
          ("\\.emacs$" . emacs-lisp-mode)
          ("\\.m$" . octave-mode)
          ("\\.mm$" . objc-mode)
@@ -42,7 +43,7 @@
     (c-cleanup-list              . (scope-operator
                                     list-close-comma
                                     defun-close-semi))
-    (c-offsets-alist             . ((arglist-close         .  c-lineup-arglist)
+    (c-offsets-alist             . ((arglist-close         .  c-lineup-close-paren)
                                     (label                 . -4)
                                     (access-label          . -4)
                                     (substatement-open     .  0)
@@ -83,13 +84,10 @@
   (add-to-list (defvar compilation-error-regexp-alist-alist) '(steven-devenv
 							       "*\\([0-9]+>\\)?\\(\\(?:[a-zA-Z]:\\)?[^:(\t\n]+\\)(\\([0-9]+\\)) : \\(?:see declaration\\|\\(?:warnin\\(g\\)\\|[a-z ]+\\) C[0-9]+:\\)"
 							       2 3 nil (4)))
-
   
   (cond ((file-exists-p buffer-file-name) t)
 	((string-match "[.]h" buffer-file-name) (steven-header-format))
 	((string-match "[.]cpp" buffer-file-name) (steven-source-format)))
-
-
   )
 
 (add-hook 'c-mode-common-hook 'steven-c-hook)
