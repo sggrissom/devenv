@@ -1,6 +1,7 @@
 ;; my-loadpackages.el
 ;; loading package
 (load "~/.emacs.d/sg-packages.el")
+(load "~/.emacs.d/php-beautifier.el")
 
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
