@@ -1,3 +1,3 @@
 @echo off
-call "C:\Program Files\emacs\bin\runemacs.exe"
+call "C:\work\emacs\bin\runemacs.exe"
 cls

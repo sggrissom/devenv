@@ -4,22 +4,27 @@
 
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("elpa" . "http://elpa.gnu.org/packages/") t)
 (add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 (defvar required-packages
   '(
+    evil
     smex
     go-mode
     php-mode
     js2-mode
     web-mode
     powershell
-    dos
-    haskell-mode
-    auctex
+    projectile
+    ag
+    flycheck
+	dsvn
+	company
+	php-auto-yasnippets
+	ac-php
     ) "a list of packages to ensure are installed at launch.")
 
 ;; method to check if all packages are installed
