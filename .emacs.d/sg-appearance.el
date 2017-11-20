@@ -39,7 +39,6 @@
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "gray20")
 
-
 ;;turn on line numbers everywhere
 (global-linum-mode 1)
 
@@ -53,3 +52,19 @@
 (setq-default truncate-lines t)
 (setq truncate-partial-width-windows nil)
 (split-window-horizontally)
+
+;; change mode-line color by evil state
+     (add-hook 'post-command-hook
+       (lambda ()
+         (let ((color (cond ((minibufferp) '("grey20" . nil))
+                            ((evil-insert-state-p) '("mediumpurple1" . "white"))
+                            ((evil-emacs-state-p)  '("grey20" . nil))
+                            ((buffer-modified-p)   '("snow2" . "black"))
+                            (t '("grey20" . nil)))))
+           (set-face-background 'hl-line (car color))
+           (set-face-foreground 'hl-line (cdr color))
+           (set-face-background 'mode-line (car color))
+           (set-face-foreground 'mode-line (cdr color)))))
+
+(provide 'sg-appearance)
+;;; sg-appearance.el ends here
