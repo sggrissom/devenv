@@ -58,6 +58,8 @@
 
 (abbrev-mode 1)
 
+(setq-default indent-tabs-mode nil)
+
 (setq scroll-conservatively 10)
 (setq scroll-margin 7)
 

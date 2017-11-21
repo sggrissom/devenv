@@ -32,6 +32,12 @@
 ;               (define-key php-mode-map  (kbd "C-t") 'ac-php-location-stack-back)    ;go back
 ;               ))
 
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
 
 (provide 'sg-loadpackages.el)
 ;;; sg-loadpackages.el ends here
