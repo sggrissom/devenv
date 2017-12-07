@@ -23,7 +23,9 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (projectile web-mode smex powershell php-mode js2-mode go-mode evil))))
+    (projectile web-mode smex powershell php-mode js2-mode go-mode evil)))
+ '(phpcbf-executable "c:/work/tools/phpcbf.bat")
+ '(phpcbf-standard "c:/work/tools/phpcs/ruleset.xml"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

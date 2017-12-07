@@ -7,8 +7,8 @@
 (setq steven-keys-minor-mode-map (delq '(kp-tab . [9]) steven-keys-minor-mode-map))
 
 ;; view function current keybining or vice versa
-(define-key steven-keys-minor-mode-map (kbd "C-?") 'describe-key)
-(define-key steven-keys-minor-mode-map (kbd "M-?") 'describe-function)
+(define-key steven-keys-minor-mode-map (kbd "C-/") 'describe-key)
+(define-key steven-keys-minor-mode-map (kbd "M-/") 'describe-function)
 
 (define-key steven-keys-minor-mode-map (kbd "C-h") 'backward-char)
 (define-key steven-keys-minor-mode-map (kbd "C-l") 'forward-char)
@@ -33,6 +33,8 @@
 
 (define-key steven-keys-minor-mode-map (kbd "M-f") 'find-file)
 (define-key steven-keys-minor-mode-map (kbd "M-F") 'find-file-other-window)
+(define-key steven-keys-minor-mode-map (kbd "M-g") 'projectile-find-file)
+(define-key steven-keys-minor-mode-map (kbd "M-G") 'projectile-find-file-other-window)
 
 (define-key steven-keys-minor-mode-map (kbd "M-b")  'ido-switch-buffer)
 (define-key steven-keys-minor-mode-map (kbd "M-B")  'ido-switch-buffer-other-window)
@@ -47,13 +49,17 @@
 (define-key steven-keys-minor-mode-map (kbd "M-c") 'find-corresponding-file)
 (define-key steven-keys-minor-mode-map (kbd "M-C") 'find-corresponding-file-other-window)
 
-(define-key steven-keys-minor-mode-map (kbd "M-u") 'kill-region)
-(define-key steven-keys-minor-mode-map (kbd "C-u") 'kill-ring-save)
-(define-key steven-keys-minor-mode-map (kbd "C-i") 'yank)
+(define-key steven-keys-minor-mode-map (kbd "M-u") 'svn-status)
+(define-key steven-keys-minor-mode-map (kbd "C-u") 'svn-update)
+(define-key steven-keys-minor-mode-map (kbd "C-1") 'flycheck-list-errors)
+(define-key steven-keys-minor-mode-map (kbd "M-1") 'flycheck-next-error)
+(define-key steven-keys-minor-mode-map (kbd "M-p") 'phpcbf-this-file)
 
 (define-key steven-keys-minor-mode-map (kbd "<tab>") 'dabbrev-expand)
 (define-key steven-keys-minor-mode-map [S-tab] 'indent-for-tab-command)
 (define-key steven-keys-minor-mode-map [C-tab] 'indent-region)
+
+(define-key steven-keys-minor-mode-map (kbd "M-SPC") 'xref-find-definitions)
 
 (define-minor-mode steven-keys-minor-mode
   "A minor mode that contains my keybindings."

@@ -21,6 +21,7 @@
 (set-face-attribute 'font-lock-string-face nil :foreground "mediumpurple1")
 (set-face-attribute 'font-lock-type-face nil :foreground "turquoise")
 (set-face-attribute 'font-lock-variable-name-face nil :foreground "turquoise")
+(set-face-attribute 'region nil :background "light sea green")
 
 ;; make TODOs and NOTEs stand out
 (defvar fixme-modes '(c++-mode c-mode emacs-lisp-mode))

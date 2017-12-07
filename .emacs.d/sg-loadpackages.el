@@ -1,5 +1,7 @@
 ;; my-loadpackages.el
 ;; loading package
+
+;;; Code:
 (load "~/.emacs.d/sg-packages.el")
 (load "~/.emacs.d/php-beautifier.el")
 
@@ -13,8 +15,24 @@
 
 (projectile-global-mode)
 
+(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+(setq flycheck-phpcs-standard "c:/work/tools/phpcs/ruleset.xml")
+(setq flycheck-phpmd-rulesets "c:/work/tools/phpmd/ruleset.xml")
+
+(eval-after-load 'flycheck
+  '(setq flycheck-xml-parser 'flycheck-parse-xml-region))
+
+;(flycheck-define-checker phpcs
+;  "A"
+;  :command ("phpcs" "-s" "" "--report=emacs" source)
+;  :error-patterns
+;    ((error line-start (file-name) ":" line ":" column ": error - " (message) line-end);
+;	 (warning line-start (file-name) ":" line ":" column ": warning - " (message) lin;e-end))
+;  :modes php-mode
+;  :next-checkers '(php))
+  
 (autoload 'svn-status "dsvn" "Run `svn status'." t)
 (autoload 'svn-update "dsvn" "Run `svn update'." t)
 
@@ -38,6 +56,9 @@
 (flx-ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
+
+(dumb-jump-mode)
+(setq dumb-jump-force-searcher 'ag)
 
 (provide 'sg-loadpackages.el)
 ;;; sg-loadpackages.el ends here

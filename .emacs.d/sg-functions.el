@@ -146,6 +146,24 @@
   (insert "\n")
   )
 
-
 (setq grep-use-null-device t)
 (set-variable 'grep-command "findstr -spnil -c:\"\" \*\.\*")
+
+(defun phpcbf-this-file ()
+  "run phpcbf on this file"
+  (interactive)										 
+  (when (eq major-mode 'php-mode)
+    (shell-command-to-string (format "phpcbf --standard=c:/work/tools/phpcs/ruleset.xml %s" buffer-file-name))
+    (revert-buffer :ignore-auto :noconfirm)))
+
+(defun is-useless-buffer (buffer)
+  (let ((name (buffer-name buffer)))
+    (and (= ?* (aref name 0))
+         (and
+          (not (string-match "^\\*messages\\*" name))
+          (not (string-match "^\\*scratch\\*" name))))))
+
+(defun kill-useless-buffers ()
+  (interactive)
+  (loop for buffer being the buffers
+        do (and (is-useless-buffer buffer) (kill-buffer buffer))))
