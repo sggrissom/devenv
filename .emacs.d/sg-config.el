@@ -63,7 +63,7 @@
 (setq scroll-conservatively 10)
 (setq scroll-margin 7)
 
-(setq visible-bell 1)
+(setq ring-bell-function 'ignore)
 
 (add-hook 'window-setup-hook '(lambda()
 				(interactive)
